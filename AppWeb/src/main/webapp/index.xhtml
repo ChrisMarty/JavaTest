@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="template/ui.xhtml">
+	<ui:define name="body">
+		<h4>Exemple de Caroussel</h4>
+		<h:form id="primeForm">
+		
+			<br />TEST : #{maTableController.maTable.code} : #{maTableController.maTable.libelle}<br />
+		
+			<p:carousel id="basicCarousel" value="#{mainController.carsSmall}" var="car" itemStyleClass="carItem" autoPlayInterval="4000" circular="true" effect="fade">
+	   			<f:facet name="header">
+	            	Voitures
+	    		</f:facet>
+				<h:panelGrid columns="2" style="width:100%" cellpadding="5">
+					<p:graphicImage value="/images/cars/#{car.manufacturer}.jpg" width="50 px" height="50 px"/> 
+
+					<h:outputText value="Modèle: #{car.model}" />
+					
+					<h:outputText value="Année: #{car.year}" />
+					
+					<h:outputText value="Couleur: #{car.color}" />
+					
+				</h:panelGrid>
+			    <f:facet name="footer">
+			            Au total il y a #{mainController.carsSmall.size()} voitures.
+			    </f:facet>
+			</p:carousel>
+		</h:form>
+	</ui:define>
+</ui:composition>
